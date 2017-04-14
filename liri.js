@@ -22,7 +22,8 @@ if (inputRequest === 'my-tweets'){
   
   		if (!error && response.statusCode === 200) {
   			for (i = 0; i < tweets.length; i++){
-    			console.log(tweets[i].created_at + ' , ' + tweets[i].text);
+
+    			console.log('\n*******************\n' + tweets[i].created_at + '\n' + tweets[i].text);
 			}
   		}
 	});
