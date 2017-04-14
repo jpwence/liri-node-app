@@ -23,7 +23,8 @@ if (inputRequest === 'my-tweets'){
   		if (!error && response.statusCode === 200) {
   			for (i = 0; i < tweets.length; i++){
 
-    			console.log('\n*******************\n' + tweets[i].created_at + '\n' + tweets[i].text);
+    			console.log('\n' + "Tweet Number: "+ [i] + '\n' + 
+    				tweets[i].created_at + '\n' + tweets[i].text + '\n');
 			}
   		}
 	});
@@ -33,17 +34,30 @@ if(inputRequest === 'spotify-this-song'){
 
 	var songname = process.argv[3];
 
+	if (process.argv[3] == null){
+		songname = 'Ace of Base';
+	}
+
 	spotify.search({ type: 'track', query: songname }, function(err, data) {
-    if ( err ) {
+    if (err) {
         console.log('Error occurred: ' + err);
         return;
     }
-	console.log(data.tracks.items[0].artists[0].name);
 
- 	// console.log(data.tracks.items[0].artists[0].name);
- 	console.log()
-    // Do something with 'data' 
+    console.log("************************************************");
+
+	console.log("Artist: " + data.tracks.items[0].artists[0].name);
+
+ 	console.log("Song: " + data.tracks.items[0].name);
+
+ 	console.log("Preview link: " + data.tracks.items[0].preview_url);
+
+ 	console.log("Album: " + data.tracks.items[0].album.name);
+
+ 	console.log("************************************************");
 });
 
 
 };
+
+
